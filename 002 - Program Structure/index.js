@@ -3,6 +3,7 @@
 // EXERCISES
 
 // Looping a triangle
+console.log("Looping a triangle:");
 
 let triangleRow = "";
 
@@ -14,6 +15,7 @@ while (triangleRow.length < 7) {
 /* for (let line = "#"; line.length < 8; line += "#") console.log(line); */
 
 // FizzBuzz
+console.log("FizzBuzz:");
 
 for (let i = 1; i <= 100; i++) {
   if (i % 3 === 0 && i % 5 === 0) {
@@ -35,6 +37,7 @@ for (let i = 1; i <= 100; i++) {
 } */
 
 // Chessboard
+console.log("Chessboard:");
 
 let chessRowCount = 0;
 let chessRow = "";
