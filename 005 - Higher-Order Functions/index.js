@@ -1,3 +1,7 @@
+const { countBy, characterScript } = require("./05_higher_order");
+const SCRIPTS = require("./scripts");
+require("./scripts.js");
+
 // 005 - Higher-Order Functions
 
 // EXERCISES
@@ -84,4 +88,30 @@ function every2(array, predicate) {
 // Dominant writing direction
 console.log("Dominant writing direction:");
 
-/*  */
+function dominantDirection(text) {
+  const scripts = countBy(text, (char) => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : "none";
+  }).filter(({ name }) => name != "none");
+
+  scripts.sort((a, b) => b.count - a.count);
+
+  return scripts[0].name;
+}
+
+console.log(dominantDirection("Hello!"));
+// ltr
+console.log(dominantDirection("Hey, مساء الخير"));
+// rtl
+
+/* 
+function dominantDirection(text) {
+  let counted = countBy(text, char => {
+    let script = characterScript(char.codePointAt(0));
+    return script ? script.direction : "none";
+  }).filter(({name}) => name != "none");
+
+  if (counted.length == 0) return "ltr";
+
+  return counted.reduce((a, b) => a.count > b.count ? a : b).name;
+} */
